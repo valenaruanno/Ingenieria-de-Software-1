@@ -1,0 +1,19 @@
+Cuestionarios
+
+Parte I Definiciones.
+
+1) Describir qué tipo de información se busca mediante la aplicación de cuestionarios.
+2) Describir bajo qué circunstancia considera apropiado utilizar cuestionarios.
+3) Describir los dos tipos de cuestionarios.
+
+1. El tipo de información que se busca es recolectar hechos, detectar un sentimiento generalizado y/o problemas entre 
+usuarios. Además, mediante los cuestionarios las personas dicen lo que quieren y lo que creen que es verdad y 
+transmiten lo que realmente hacen y características importantes acerca de otras personas/ cosas.
+
+2. Es apropiado usar cuestionarios cuando las personas están dispersas geograficamente en distintas oficinas o 
+ciudades, cuando la cantidad de personas involucradsa es mucha, cuando se quieren obtener opiniones más generales y
+cuando se quieren identificar problemas generales.
+
+3. 
+    -> Cuestionarios de preguntas abiertas: son aquellos que dejan abiertas todas las posibles opciones de respuesta.
+    -> Cuestionarios de preguntas cerradas: son aquellos que limitan o cierran las opciones de respuestas disponibles.

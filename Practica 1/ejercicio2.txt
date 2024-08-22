@@ -1,0 +1,42 @@
+Parte II Problemas.
+a) Indicar para cada problema quiénes podrían ser los Stakeholders, los puntos de vista y las fuentes de
+información.
+
+1. En un sistema de registro de asistencia a través de técnicas biométricas (huella digital) de estudiantes
+universitarios para la cátedra de Ingeniería I. Este sistema se alimentará de un listado otorgado por la oficina
+de alumnos de la facultad. Además, necesita la autorización del Jefe de Trabajos Prácticos del turno
+correspondiente para luego los alumnos poder registrar el presente. También, el profesor a cargo de la
+materia podrá consultar y listar el estado de cada alumno perteneciente a su cátedra. El sistema sólo se
+utilizará en el ámbito de la facultad de Informática y deberá adecuarse a la reglamentación sobre privacidad
+de los datos en el ámbito de la misma.
+
+    - Stakeholders: estudiantes de la cátedra de Igenieria I, oficina de alumnos de la facultad, jefes de 
+      Trabajos Prácticos, profesores a cargo de la materia.
+    - Puntos de vista: 
+        -> Interactuadores: Jefe de Trabajos Prácticos, alumnos, profesores a cargo de la materia.
+        -> Indirectos: oficina de alumnos de la facultad.
+        -> Dominio: reglamentación sobre privacidad de los datos.
+    - Fuentes de información: Todos los stakeholders y la reglamentacion sobre la privacidad de los datos.
+
+
+2. Se desea desarrollar un sistema para gestionar y administrar la atención de pacientes en una clínica privada
+especializada en tratamientos alérgicos. Cuando un paciente nuevo es ingresado a la clínica el empleado
+registra todos sus datos personales, posteriormente un enfermero registra los controles y realiza las
+anotaciones habituales (temperatura, presión, peso, reacciones alérgicas etc.). Luego, el paciente es derivado
+con alguno de los doctores de la clínica, quién registra qué tratamientos deberá realizar. El médico también
+se encarga de registrar si el paciente debe quedar internado y debe mantener su historia clínica durante el
+período que dure el tratamiento. Se sabe que el director de la clínica puede consultar las historias clínicas de
+todos los pacientes. El sistema debe adecuarse a las normativas impuestas por el ministerio de salud de la
+provincia de Bs As.
+
+    - Stakeholders: Pacientes de la clínica, secretario/a, enfermeros, doctores, director de la clínica.
+    - Puntos de vista: 
+        -> Interactuadores: secretario/a, enfermero/a, doctores, director.
+        -> Indirectos: Pacientes.
+        -> Dominio: normativas del ministerio de salud, tratamientos, historia clínica, pacientes alérgicos (). //Estan bien los pacientes? y la internación??
+    - Fuentes de informacion: todos los stakeholders y las normas del ministerio de salud, tratamientos, registros de controles, historia clínica. //Estan bien los últimos??
+
+b) Habiendo resuelto los problemas presentados, ¿por qué considera que los requerimientos de los distintos
+stakeholders podrían entrar en conflicto?  
+
+    //Consultar.                    conducta humana

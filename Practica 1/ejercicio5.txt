@@ -1,0 +1,17 @@
+Problema 1
+
+Preparar una entrevista para obtener los requerimientos del siguiente problema:
+Se desea desarrollar un sistema que permita compartir un vehículo para un viaje. La idea es que cuando una persona
+tiene que realizar un viaje lo publique en la aplicación. Luego el resto de los usuarios se postulan para acompañarla y
+el chofer podrá seleccionar quienes viajan. El objetivo es abaratar costos y evitar congestiones en el tránsito.
+
+
+Problema 2
+
+Preparar una entrevista para obtener los requerimientos del siguiente problema:
+CookBooks es un negocio pequeño manejado por una pareja jubilada. Hasta este momento, Cookbooks ha vendido
+sus libros sólo a través de pedidos por correo. Los dueños ahora quieren desarrollar un sistema en línea para vender
+libros de cocina difíciles de conseguir y agotados a través de internet.
+
+Los visitantes podrán hojear diferentes libros de cocina, pero tendrán que crear una cuenta del cliente antes de
+poder hacer una compra. Los pagos se aceptarán sólo en línea con una tarjeta de crédito reconocida

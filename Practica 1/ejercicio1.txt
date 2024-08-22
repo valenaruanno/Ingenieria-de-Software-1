@@ -1,0 +1,28 @@
+Parte I Definiciones.
+1) Definir brevemente qué es un requerimiento.
+2) Definir requerimientos funcionales y no funcionales.
+3) Definir que es un stakeholder.
+4) Definir las fuentes más importantes para la obtención de información.
+5) Indicar los puntos de vista (de manera genérica) que se pueden reconocer en un proyecto de software.
+6) Enumerar tres problemas de comunicación que pueden existir en la elicitación de requisitos.
+
+1- Un requerimiento es una caracteristica del sistema o una descripcion de algo que el sistema es capaz de hacer        con el objetivo de satisfacer el propósito del problema. 
+
+2- Los requerimientos funcionales son aquellos que describen qué debe hacer el sistema. Son específicos del comportamiento del sistema y las funcionalidades que se deben implementar para para cumplir con los objetivos del usuario. En cambio, los requerimientos no funcionales apuntan a cómo debe funcionar el sistema a partir de su rendimiento, seguridad y usabilidad.
+
+3- Un stakeholder es cualquier persona o grupo que se ve afectado por el sistema, directa o indirectamente. 
+
+4- Las fuentes más importantes para la obtencion de informacion son: 
+    -> Documentación.
+    -> Stakeholders.
+    -> Especificaciones de sistemas similares. 
+
+5- Los puntos de vista que se pueden reconocer en un proyecto de software son:
+    - Punto de vista de los interactuadores: personas u otros sistemas que interactuan directamente con el sistema. 
+    - Punto de vista indirecto: son los stakeholders que no utilizan el sistema pero que influyen en los requerimientos.
+    - Punto de vista del dominio: características y reestricciones del dominio que influyen en los requerimientos del sistema.
+
+6- Problemas de comunicación que pueden existir:
+    -> Problemas de comunicación: Dificultad para expresar las necesidades, no ser concientes de las propias necesidades, no saber como la tecnología puede solucionar las necesidades, miedos a parecer incompetentes informaticamente y a las consecuencias, cultura y vocabularios diferentes, conflictos personales, etc.
+    -> Limitaciones cognitivas: no conocer el dominio del sistema, suposiciones del dominio del problema, hacer suposiciones excesivas y/o utilizar innovaciones tecnológicas que no satisfacen las necesidades.
+    -> Conducta humana: ambiguedades en los roles de los participantes, temor a que el sistema lo deje sin trabajo y pasibidad del usuario, cliente o del ingeniero.
