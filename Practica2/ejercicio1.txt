@@ -113,3 +113,13 @@ Criterios de aceptacion:
     Cuando la persona ingrese su usuario y contraseña incorrectos.
     Entonces el sistema informara que el usuario o la contraseña son incorrectos.
 
+Historia de usuario 4
+    Id: cerrar sesion.
+    Titulo: como usuario alumno quiero cerrar sesion para salir de mi cuenta.
+    Reglas de negocio:
+
+Criterios de aceptacion:
+    Escenario 1: cierre exitoso.
+        Dado que un usuario alumno con la sesion iniciada.
+        Cuando el alumno presiona cerrar sesion.
+        Entonces el sistema lo redirige a la pagina principal con el rol de usuario no registrado.
