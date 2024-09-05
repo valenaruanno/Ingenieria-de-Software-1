@@ -1,0 +1,61 @@
+Historia de usuario 1
+
+ID: Asociarse a la biblioteca
+Titulo: como alumno quiero asociarme a la biblioteca para poder utilizar los liros que hay en la misma
+Reglas de negocio: 
+    -  Tener certificado de alumno regular
+
+Criterios de aceptacion: 
+    Escenario 1: asociacion exitosa
+        Dado un alumno cuyo dni es 46004 y tiene un certificado de alumno regular 
+        Cuando el alumno ingrese su dni 46004 y su certificado de alumno regular y precione "Asociarse"
+        Entoces el sistema le otorgara un carnet con su respectivo numero de socio
+
+    Escenario 2: asociacion fallida por falta de cerficado 
+        Dado un alumno cuyo dni es 21828 pero no tiene un certificado de alumno regular 
+        Cuando el alumno ingrese el dni 21828 y presione "Asociarse"
+        Entonces el sistema informa que el alumno debe presentar su numero de socio
+
+Historia de usuario 2 
+
+ID: Solicitar prestamo
+Titulo: como usuario quiero solicitar un prestamo para leer un libro de mi interes
+Reglas de negocio: 
+    - Estar habilitado
+    - No poseer mas de 3 prestamos vigentes 
+    - No tener prestamos vencidos
+
+Criterios de aceptacion: 
+    Escenario 1: Solicitud exitosa 
+        Dado un usuario con dni 46004 que esta habilitado, posee 1 prestamo vigente y no tiene prestamos vencidos 
+        Cuando el cliente con dni 46004 presione "Solicitar libro"
+        Entonces el sistema carga la solicitud e informa que la solicitud ha sido realizada con exito 
+    
+    Escenario 2: Solicitud fallida por cliente inhabilitado 
+        Dado un usuario con dni 23456 que no esta habilitado, posee 1 prestamo y no tiene prestamos vencidos 
+        Cuando el cliente con dni 23456 y presione "Solicitar libro"
+        Entonces el sistema informara que el usuario no esta habilitado para tomar libros
+
+    Escenario 3: Solicitud fallida por mayor cantidad de prestamos que el maximo 
+        Dado un usuario con dni 45678 que esta habilitado, posee 3 prestamos y no tiene prestamos vencidos 
+        Cuando el cliente con dni 45678 y presione "Solicitar libro"
+        Entonces el sistema informara que el usuario no ya no puede solicitar mas libros debido a que llego al maximo de libros solicitados
+
+    Escenario 4: Solicitud fallida por tener prestamos vencidos 
+        Dado un usuario con dni 45678 que esta habilitado, posee 2 prestamos y tiene 1 prestamo vencido 
+        Cuando el cliente con dni 45678 y presione "Solicitar libro"
+        Entonces el sistema informara que el usuario no puede solicitar un prestamo por que tiene un o varios prestamo/s vencido/s 
+
+    Escenario 5: Solicitud fallida por libro en estado de deterioro
+        Dado un usuario con dni 45678 que esta habilitado, posee 2 prestamos, no tiene prestamos vencidos pero el libro solicitado esta deteriorado
+        Cuando el cliente con dni 45678 y presione "Solicitar libro"
+        Entonces el sistema informara que el libro solicitado no puede ser prestado debido a su estado de deterioro 
+
+
+Historia de usuario 3 
+
+ID: Devolucion del libro 
+Titulo: como usuario quiero devolver el libro porque no lo necesito mas 
+Reglas de negocio: 
+    
+    

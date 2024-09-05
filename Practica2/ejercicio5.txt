@@ -1,0 +1,123 @@
+Historia de usuario 1
+
+ID: registro persona 
+Titulo: Como persona quiero registrarme en el sitio para poder subir mis fotos
+Reglas de negocio: 
+
+Criterios de aceptacion: 
+    Escenario 1: Registro exitoso 
+        Dado una persona con nombre "abril" que no esta registrada en el sitio
+        Cuando la persona ingresa su nombre "abril", apellido "manzur", email "abrilM@", domicilio "Calle 1 y 54", nombre de usuario "abruManzur", contraseña "1234" y presiona "registrarme"
+        Entonces el sistema guarda a la persona e informa que el registro se ha completado con exito 
+        
+
+
+Historia de usuario 2
+
+ID: Inicio sesion
+Titulo: como usuario quiero iniciar sesion para poder subir mis fotos a imprimir 
+Reglas de negocio:
+
+Criterios de aceptacion 
+    Escenario 1: Inicio de sesion exitoso
+        Dado un usuario que ingresa sus datos correctamente 
+        Cuando el usuario ingresa su nombre de usuario "pepito123" y contraseña "1234" y presiona "Iniciar sesion"
+        Entonces el sistema lo redirige a la pagina donde puede subir las fotos que desea imprimir 
+
+    Escenario 2: Inicio de sesion fallido por datos incorrectos 
+        Dado un usuario que ingresa sus datos incorrectamente
+        Cuando el usuario ingresa el nombre de usuario "pepe123" y su contraseña "4567" y presiona "Iniciar sesion"
+        Entonces el sistema informa que los datos ingresados no coinciden con un usuario registrado y le pide que los vuelva a ingresar.
+
+
+
+Historia de usuario 3
+
+ID: Cierre sesion 
+Titulo: como usuario quiero cerrar mi sesion para salir de mi cuenta 
+Reglas de negocio:
+
+Criterios de aceptacion:
+    Escenario 1: Cierre de sesion exitoso 
+        Dado un usuario que desea cerrar la sesion de su cuenta
+        Cuando el usuario presiona "Cerrar sesion"
+        Entonces el sistema lo redirige a la pagina de logIn y signUp.
+
+
+
+Historia de usuario 4
+
+ID: Subir foto/s 
+Titulo: Como usuario quiero subir mis fotos para poder imprimirlas 
+Reglas de negocio:
+    - Maximo 50 fotos.
+    - Las fotos deben ser subidas de a una.
+
+Criterios de aceptacion:
+    Escenario 1: Carga exitosa
+        Dado un usuario con nombre de usuario "abruManzur" que subio 30 fotos y realizo el abono con exito 
+        Cuando el usuario presiona "Obtener codigo"
+        Entonces el sistema le proporciona un codigo unico al usuario y le da la opcion de volver a la pagina principal
+        
+    Escenario 2: carga fallida por superar el tope maximo de fotos 
+        Dado un usuario con nombre de usuario "abruManzur" que realizo el pago con exito pero subio 55 fotos
+        Cuando el usuario presiona "Obtener codigo"
+        Entonces el sistema informa que se ha superado el numero maximo de fotos
+    
+    Escenario 3: carga fallida por cargar mas de una foto a la vez 
+        Dado un usuario con nombre de usuario "abruManzur" que subio 2 fotos a la vez 
+        Cuando el usuario presiona "Obtener codigo"
+        Entonces el sistema informa que se han cargado mal las fotos
+
+    Escenario 4: carga fallida por error en el pago 
+        Dado un usuario con nombre de usuario "abruManzur" que subio 48 fotos y las condiciones no son las adecuadas para un pago exitoso. 
+        Cuando el usuario presiona "Obtener codigo"
+        Entonces el sistema informa que ha ocurrido un error durante el pago de las fotos y lo redirige al sitio de pago.
+
+
+
+Historia de usuario 5 
+
+ID: Pagar fotos 
+Titulo: como usuario quiero pagar las fotos a imprimir para poder ir a retirarlas
+Reglas de negocio: 
+    - Solo se aceptan numeros correspondientes a tarjetas de credito 
+
+Criterios de aceptacion:
+    Escenario 1: Pago exitoso 
+        Dado que la conexion con el servidor del banco es exitosa, el numero de tarjeta 1234 corresponde a una tarjeta de credito y la misma tiene saldo 
+        Cuando el usuario ingresa el numero de tarjeta 1234 cuyo codigo de seguridad es 111 y el nombre del titular "valentin"
+        Entonces el sistema registra el pago y retorna un mensaje de exito 
+    
+    Escenario 2: Pago fallido por numero de tarjeta de credito inexistente
+        Dado que la conexion con el servidor del banco es exitosa y el numero de tarjeta 2345 no corresponde a una tarjeta de credito
+        Cuando el usuario ingresa el numero de tarjeta 2345 cuyo codigo de seguridad es 111 y el nombre del titular "valentin"
+        Entonces el sistema informa que el numero de tarjeta equivale a uno inexistente
+    
+    Escenario 3: Pago fallido por saldo insuficiente 
+        Dado que la conexion con el servidor del banco es exitosa y el numero de tarjeta 2345 no posee saldo suficiente 
+        Cuando el usuario ingresa el numero de tarjeta 2345 cuyo codigo de seguridad es 111 y el nombre del titular "valentin"
+        Entonces el sistema informa que el numero de tarjeta ingresado no posee saldo suficiente para el abono 
+
+    Escenario 4: Pago fallido por error en la conexion con el serividor del banco 
+        Dado que no se pudo realizar la conexion con el servidor del banco 
+        Cuando el usuario ingresa el numero de tarjeta 2345 cuyo codigo de seguridad es 111 y el nombre del titular "valentin"
+        Entonces el sistema informa la conexion fallida 
+
+Historia de usuario 6 
+
+ID: retirar fotos
+Titulo: como usuario quiero retirar las fotos para poder llevarmelas a mi casa 
+Reglas de negocio:
+    - Tener un codigo unico.
+
+Criterios de aceptacion:
+    Escenario 1: retiro exitoso 
+        Dado un usuario cuyo nombre de usuario es "valenaruanno" y tiene un codigo unico 123
+        Cuando ingreso el codigo 123 y presiono "Concluir entrega"
+        Entonces el sistema registra el codigo unico y la fecha de entrega
+    
+    Escenario 2: retiro fallido por codigo invalido 
+        Dado un usuario cuyo nombre de usuario es "carolinadimasi" y tiene un codigo unico 345
+        Cuando ingreso el codigo 345 y presiono "Concluir entrega"
+        Entonces el sistema me informa que no existe un codigo unico que le corresponde al codigo prporsionado

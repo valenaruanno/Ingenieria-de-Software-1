@@ -38,7 +38,7 @@ Escenario 2: Minuta fallida de aprobación porque el usuario posee 3 minutas.
     Cuando se ingresa el número de minuta “6666666666” y se presiona “aprobar”.
     Entonces el sistema informa que la minuta no se puede aprobar debido a que el usuario ya posee el máximo de minutas.
 
-Escenario 3: Minuta fallida de aprobación porque el usuario posee el CUIT habilitado.
+Escenario 3: Minuta fallida de aprobación porque el usuario posee el CUIT deshabilitado.
     Dado un número de minuta “6666666666” que está pendiente de aprobar, se realizo la conexion con el servidor de la AFIP Y cuyo usuario posee el CUIT deshabilitado.
     Cuando se ingresa el número de minuta “6666666666” y se presiona “aprobar”.
     Entonces el sistema informa que la minuta no se puede aprobar debido a que el usuario no posee el número de CUIT habilitado.

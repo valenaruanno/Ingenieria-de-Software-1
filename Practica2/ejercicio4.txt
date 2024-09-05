@@ -52,3 +52,27 @@ Historia de usuario 4
 ID: Comprar productos
 Título: Como usuario quiero seleccionar los productos para poder realizar mi compra.
 Reglas de negocio:
+    - Si el cliente es premium recibe un 20% off.
+    - Si la compra supera los $4.500, el cliente recibe 10%.
+
+Criterios de aceptacion:
+    Escenario 1: Compra usuario premium 
+        Dado un usuario con nombre de usuario "valentin", que es cliente premium
+        Cuando arma su lista de productos y presionar "Comprar"
+        Entonces el sistema calcula el costo de la compra, aplica el 20% al total a pagar e informa el monto.
+
+    Escenario 2: Compra usuario comun 
+        Dado un usuario con nombre de usuario "fabio", que es cliente comun 
+        Cuando arma su lista de productos y presionar "Comprar"
+        Entonces el sistema calcula el costo de la compra e informa el monto.
+    
+    Escenario 3: Compra superior a $4.500 
+        Dado un usuario con nombre de usuario "valentin", que es cliente comun y cuya compra es superior a $4.500
+        Cuando arma su lista de productos y presionar "Comprar"
+        Entonces el sistema calcula el costo de la compra, aplica el 10% al total a pagar e informa el monto.
+    
+    Escenario 3: Compra superior a $4.500 de un cliente premium
+        Dado un usuario con nombre de usuario "diego", que es cliente premium y cuya compra es superior a $4.500
+        Cuando arma su lista de productos y presionar "Comprar"
+        Entonces el sistema calcula el costo de la compra, aplica el 30% al total a pagar e informa el monto.
+    
