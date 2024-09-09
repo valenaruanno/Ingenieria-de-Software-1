@@ -73,10 +73,8 @@ Criterios de aceptacion:
         Entonces el sistema informa que el hijo/a supera la edad maxima para ser cargado como hijo/a a cargo.
 
 
-Historia de usuario 3
-Id: Baja de un hijo/a                               //Se implementa???
 
-Historia de usuario 4 
+Historia de usuario 3 
 Id: Pagar con tarjeta 
 Titulo: Como usuario quiero pagar para poder afiliarme a la mutual 
 Reglas de negocio: Solo se aceptan numeros correspondientes a una tarjeta de credito
@@ -105,17 +103,139 @@ Criterios de aceptacion:
         Cuando la persona ingrese la tarjeta de credito 123 y presione "Pagar"
         Entonces el sistema informa que no se pudo realizar el pago por falta de conexion con el servidor del banco. 
 
+Historia de usuario 4
+ID: prestar ortodoncia 
+Titulo: Como afiliado quiero obtener la prestacion de la ortodoncia para sacarme un diente
+Reglas de negocio:
+    - Se reconoce solo una.
+    - Afiliados menores a 15 anios afiliados desde al menos 9 meses.
+    - Presentar historia clinica 
+
+Criterios de aceptacion 
+    Escenario 1: prestacion exitosa 
+        Dado un afiliado con numero 1 que aun no ha solicitado su prestacion de ortodoncia, es menor a 15 anios, 
+            afiliado hace 10 meses y posee una historia clinica
+        Cuando el afiliado ingrese su numero de afiliado, edad 12 anios, adjunte la historia y presione "Solicitar"
+        Entonces el sistema cargara su solicitud, marcara que utilizo su prestacion y le brindara la prestacion al 
+        afiliado.
+
+    Escenario 2: prestacion fallida por ya haber utilizado la prestacion  
+        Dado un afiliado con numero 2 que ya ha solicitado su prestacion de ortodoncia
+        Cuando el afiliado ingrese su numero de afiliado 2, edad 12 anios, adjunte la historia y presione "Solicitar"
+        Entonces el sistema informara que el afiliado ya ha utilizado la prestacion correspondiente.
+
+    Escenario 3: prestacion fallida por ser mayor a la edad requerida
+        Dado un afiliado con numero 3 que aun no ha solicitado su prestacion de ortodoncia y es mayor a la edad requerida 
+        Cuando el afiliado ingrese su numero de afiliado 3, edad 17 anios, adjunte la historia y presione "Solicitar"
+        Entonces el sistema informara que el afiliado posee mas edad de la limite para solicitar la prestacion.
+    
+    Escenario 4: prestacion fallida por no cumplir con los meses minimos para solicitar la prestacion 
+        Dado un afiliado con numero 4 que aun no ha solicitado su prestacion de ortodoncia, es menor a la edad requerida
+            pero no ha cumplido el pazo necesario para pedir la prestacion 
+        Cuando el afiliado ingrese su numero de afiliado 4, edad 14 anios, adjunte la historia y presione "Solicitar"
+        Entonces el sistema informara que el afiliado no ha cumplido el pazo necesario para pedir la prestacion.
+
+    Escenario 5: prestacion fallida por no presentar historia clinica 
+        Dado un afiliado con numero 5 que aun no ha solicitado su prestacion de ortodoncia, es menor a la edad requerida,
+            ha cumplido el pazo necesario para pedir la prestacion pero no presenta la historia  
+        Cuando el afiliado ingrese su numero de afiliado 5, edad 14 anios,y presione "Solicitar"
+        Entonces el sistema informara que el afiliado debe adjuntar el historial.
+
+
+
 Historia de usuario 5
-ID:                                                 //Terminar de implementar 
+ID: prestar plantillas 
+Titulo: Como afiliado quiero obtener la prestacion de las plantillas para mejorar mi salud en los pies 
+Reglas de negocio:
+    - Hasta 2 por anio.
+    - Presentar la indicacion del profesional.
+    - Presentar la factura del comercio
+
+Criterios de aceptacion 
+    Escenario 1: prestacion exitosa 
+        Dado un afiliado con numero 1 que aun no ha solicitado sus 2 prestacion de plantillas, presenta la indicacion del 
+            profesional y la factura del comercio
+        Cuando el afiliado ingrese su numero de afiliado 1, adjunte la indicacion y la factura y presione "Solicitar"
+        Entonces el sistema cargara su solicitud, marcara que utilizo una prestacion y le brindara la prestacion al 
+        afiliado.
+
+    Escenario 2: prestacion fallida por ya haber utilizado las 2 prestaciones anuales 
+        Dado un afiliado con numero 2 que ya ha solicitado sus 2 prestaciones de plantillas anuales 
+        Cuando el afiliado ingrese su numero de afiliado 2, adjunte la indicacion y factura y presione "Solicitar"
+        Entonces el sistema informara que el afiliado ya ha utilizado las 2 prestacion anuales disponibles.
+
+    Escenario 3: prestacion fallida por falta de indicacion 
+        Dado un afiliado con numero 3 que aun no ha solicitado sus 2 prestaciones de plantilla, posee la factura pero
+            no la indicacion medica 
+        Cuando el afiliado ingrese su numero de afiliado 3, adjunte la factura y presione "Solicitar"
+        Entonces el sistema informara que el afiliado no ha adjuntado la indicacion medica.
+    
+    Escenario 4: prestacion fallida por falta de factura  
+        Dado un afiliado con numero 4 que aun no ha solicitado sus 2 prestaciones de plantilla, posee la indicacion pero
+            no la factura
+        Cuando el afiliado ingrese su numero de afiliado 4, adjunte la indicacion y presione "Solicitar"
+        Entonces el sistema informara que el afiliado no ha adjuntado la factura correspondiente.
 
 
 
+Historia de usuario 6
+ID: prestar anteojos 
+Titulo: Como afiliado quiero obtener la prestacion de los anteojos para poder hacerme unos de leer 
+Reglas de negocio:
+    - Se reconoce un par cada 18 meses.
+    - Para afiliados desde al menos 3 meses de afiliacion.
+
+Criterios de aceptacion 
+    Escenario 1: prestacion exitosa 
+        Dado un afiliado con numero 1 que posee la cantidad de meses correspondientes para pedir anteojos y no a pedido
+            en los utlimos 2 anios.
+        Cuando el afiliado ingrese su numero de afiliado y presione "Solicitar"
+        Entonces el sistema cargara su solicitud, marcara que utilizo su prestacion con fecha completa y le brindara 
+        la prestacion al afiliado.
+
+    Escenario 2: prestacion fallida por cumplir con los 3 meses de afiliacion  
+        Dado un afiliado con numero 2 que se ha afiliado hace 2 meses 
+        Cuando el afiliado ingrese su numero de afiliado 2 y presione "Solicitar"
+        Entonces el sistema informara que el afiliado no puede pedir los anteojos debido a que no posee 3 meses o mas
+        como afiliado.
+
+    Escenario 3: prestacion fallida por tener una solicitud reciente
+        Dado un afiliado con numero 3 que ha solicitado unos anteojos en el anio corriente 
+        Cuando el afiliado ingrese su numero de afiliado 3 y presione "Solicitar"
+        Entonces el sistema informara que el afiliado no puede pedir una nueva solicitud hasta no cumplir con el tiempo
+        solicitado.
+    
+
+Historia de usuario 7 
+ID: prestar internacion 
+Titulo: como afiliado quiero obtener la prestacion de internacion para poder operarme del pie 
+Reglas de negocio:
+
+Criterios de aceptacion: 
+    Escenario 1: prestacion exitosa 
+        Dado un afiliado con numero 3 que necesita de una internacion 
+        Cuando el afiliado ingresa su numero de afiliado 3 y presiona "Solicitar"
+        Entonces el sistema carga su solicitud y le brinda la prestacion al afiliado.
 
 
 
+Historia de usuario 8 
+ID: prestar consulta medica  
+Titulo: como afiliado quiero obtener la prestacion de consulta medica para poder obtener un diagnostico sobre mis anginas
+Reglas de negocio:
+    - Hasta 2 por mes 
+
+Criterios de aceptacion: 
+    Escenario 1: prestacion exitosa 
+        Dado un afiliado con numero 3 que tiene solicitudes de prestaciones para consultas medicas disponibles para realizar 
+        Cuando el afiliado ingresa su numero de afiliado 3 y presiona "Solicitar"
+        Entonces el sistema carga su solicitud, marca que utilizo una prestacion y le brinda la prestacion al afiliado.
 
 
-
-
+    Escenario 2: prestacion fallida por no poseer mas solicitudes para el mes corriente 
+        Dado un afiliado con numero 4 que no posee mas solicitudes disponibles en el mes 
+        Cuando el afiliado ingresa su numero de afiliado 4 y presiona "Solicitar"
+        Entonces el sistema informa que no posee mas solicituddes disponibles para realizar consultas medicas en el mes 
+        corriente.
 
 

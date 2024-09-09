@@ -1,0 +1,163 @@
+Historia de usuario 1 
+ID: pago de servicios e impuestos
+Titulo: Como cliente quiero pagar mis servicios e impuestos para ponerme al dia con los pagos
+Reglas de negocio: 
+    - Si el segundo vencimiento esta vencido no se puede realizar el pago.
+    - Si el primer vencimiento esta vencido se cobra un recargo.
+
+Criterios de aceptacion:
+    Escenario 1: pago exitoso 
+        Dado un cliente cuyo codigo de pago electronico es 123 y la conexion con el sistema de 
+            la central de cobro se realizo con exito, y el primer y segundo vencimiento estan 
+            al dia.
+        Cuando el empleado o gerente ingrese el codigo de pago 123 del cliente y presione "Cobrar"
+        Entonces el sistema realiza la conexion con la central de cobros, registra el pago e informa 
+        que la factura se ha pagado con exito.
+
+    Escenario 2: pago exitoso con primer vencimiento vencido 
+        Dado un cliente cuyo codigo de pago electronico es 234 y la conexion con el sistema de 
+            la central de cobro se realizo con exito, y el primer vencimiento esta vencido pero
+            el segundo no.
+        Cuando el empleado o gerente ingrese el codigo de pago 234 del cliente y presione "Cobrar"
+        Entonces el sistema realiza la conexion con la central de cobros, registra el pago e informa 
+        que la factura se ha pagado con exito y que se ha aplicado un recargo por tener la primer 
+        fecha de vencimiento vencida.
+    
+    Escenario 3: pago fallido por segundo vencimiento vencido 
+        Dado un cliente cuyo codigo de pago electronico es 345 y la conexion con el sistema de 
+            la central de cobro se realizo con exito, y el primer vencimiento esta vencido y
+            el segundo tambien.
+        Cuando el empleado o gerente ingrese el codigo de pago 345 del cliente y presione "Cobrar"
+        Entonces el sistema realiza la conexion con la central de cobros e informa que el pago no se 
+        pudo realizar porque la segunda fecha de vencimiento se encuentra vencida.
+
+    Escenario 4: pago fallido por error en la conexion con la central de cobros
+        Dado un cliente cuyo numero de pago electronico es 456 y la conexion con la central de cobros
+            no es la esperada para realizar el cobro 
+        Cuando el empleado o gerente ingrese el codigo de pago 456 del cliente y presione "Cobrar"
+        Entonces el sistema se conecta con la central de cobros, espera la respuesta e informa que el 
+        pago no se pudo realizar.
+
+
+Historia de usuario 2 
+ID: recuperar factura. 
+Titulo: Como gerente o empleado quiero recuperar la factura del cliente para poder registar su pago.
+Reglas de negocio: 
+
+Criterios de aceptacion:
+    Escenario 1: recuperacion exitosa 
+        Dado un numero de pago electronico que pertenece a una factura y que la conexion con el
+            sistema de cobro ha sido exitosa
+        Cuando se recibe el numero de pago electronico del cliente 
+        Entonces el sistema realiza la conexion con la central de cobros y devuelve todos los datos 
+        de la factura.
+    
+    Escenario 2: recuperacion fallida por numero invalido
+        Dado un numero de pago electronico que no pertenece a una factura y que la conexion con el
+            sistema de cobro ha sido exitosa
+        Cuando se recibe el numero de pago electronico del cliente 
+        Entonces el sistema realiza la conexion con la central de cobros y devuelve que no se ha 
+        encontrado la factura.
+
+
+Historia de usuario 3
+ID: Conexion con la central de cobros 
+Titulo: como empleado o gerente quiero conectarme con la central para realizar mi trabajo 
+Reglas de negocio:
+
+Criterios de aceptacion 
+    Escenario 1: conexion exitosa 
+        Dado un numero de token 123 que es valido 
+        Cuando la central obtiene el numero de token 123 
+        Entonces el sistema obtiene acceso a la central de cobros 
+    
+    Escenario 1: conexion fallida por token incorrecto 
+        Dado un numero de token 234 que no es valido 
+        Cuando la central obtiene el numero de token 234 
+        Entonces el sistema no obtiene acceso a la central de cobros 
+
+
+Historia de usuario 4 
+ID: Registro de pagos 
+Titulo: como gerente quiero registrar los pagos para poder enviar las transacciones realizadas 
+Reglas de negocio:
+    - El registro se puede realizar solo una vez al dia
+
+Criterios de aceptacion:
+    Escenario 1: Registro exitoso 
+        Dado un numero de clave maestra 123, que el registro todavia no se ha realizado y que la 
+            conexion con la central de cobros se realizo con exito 
+        Cuando ingreso la clave maestra 123 y presiono "Armar registro"
+        Entonces el sistema realiza la conexion con la central de cobros, recupera las transacciones 
+        de los impuestos y servicios cobrados en el día, se conecta a la central de cobro y se las 
+        envía, y recibe la confirmacion de recepción exitosa, el sistema las registra como enviadas. 
+
+    Escenario 2: Registro fallido por clave maestra invalida
+        Dado un numero de clave maestra 123 que es incorrecta 
+        Cuando ingreso la clave maestra 123 y presiono "Armar registro"
+        Entonces el sistema informa que la clave maestra ingresada no es correcta.
+    
+    Escenario 3: Registro fallido por registro ya realizado 
+        Dado un numero de clave maestra 123 y que el registro ya se ha realizado en el dia 
+        Cuando ingreso la clave maestra 123 y presiono "Armar registro"
+        Entonces el sistema informa que el registro ya ha sido realizado una vez en el dia.
+
+    Escenario 4: Registro fallido por error en la conexion con la central de cobros 
+        Dado un numero de clave maestra 123, el registro todavia no se ha realizado en el 
+            dia y la conexion con la central de cobros falla  
+        Cuando ingreso la clave maestra 123 y presiono "Armar registro"
+        Entonces el sistema informa que el registro ha sido detenido por error en la conexion con
+        la central de cobros.
+
+Historia de usuario 5
+ID: Ver estadisticas 
+Titulo: como gerente quiero ver las estadisticas de los cobros para poder utilizarlas 
+Reglas de negocio: 
+
+Criterios de aceptacion:
+    Escenario 1: Muestreo exitoso 
+        Dado una clave maestra 123 que es valida y la conexion con la central de cobros se ha 
+            realizado con exito 
+        Cuando el gerente ingresa la clave maestra 123, la fecha desde 1/9/2024, la fecha hasta 
+            9/9/2024 y presiona "Ver estadisticas"
+        Entonces el sistema devuelve los montos y la cantidad de cobros realizados ordenados
+        por empresa. 
+
+    Escenario 2: Muestreo fallido por clave invalida  
+        Dado una clave maestra 345 que no es valida
+        Cuando el gerente ingresa la clave maestra 345, la fecha desde 1/9/2024, la fecha hasta 
+            9/9/2024 y presiona "Ver estadisticas"
+        Entonces el sistema informa que la clave ingresada es incorrecta. 
+
+    Escenario 3: Muestreo fallido por error de conexion  
+        Dado una clave maestra 123 que es valida y la conexion con la central de cobros no se ha 
+            realizado con exito 
+        Cuando el gerente ingresa la clave maestra 123, la fecha desde 1/9/2024, la fecha hasta 
+            9/9/2024 y presiona "Ver estadisticas"
+        Entonces el sistema informa que la conexion con la central de cobros ha fallado. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
