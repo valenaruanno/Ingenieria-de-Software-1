@@ -1,0 +1,121 @@
+Problema 7: Mutual
+Una mutual necesita automa�zar el manejo de las prestaciones que ofrece a sus afiliados.
+Una persona puede afiliarse sólo si posee una tarjeta de crédito para que se pueda hacer el pago de la cuota mensual
+automá�camente. Una vez que la persona se ha afiliado, puede pasar a tener a cargo a su pareja e hijos (hasta 18 años,
+luego es dado de baja). A cada uno se le otorga un número de afiliado.
+Las prestaciones que brinda, siempre y cuando esté asentado el pago del mes anterior al que es solicitado, son:
+-Ortodoncia: Se reconoce sólo una y a los afiliados menores de 15 años que estén afiliados desde al menos
+nueve meses. Debe presentarse historia clínica elaborado por el profesional.
+-Plan�llas: A cualquier afiliado, hasta dos por año calendario. Debe presentarse la indicación del profesional y
+factura del comercio que la confeccionó.
+-Anteojos: A cualquier afiliado con fecha de afiliación superior a tres meses, un par cada 18 meses.
+-Internación: A cualquier afiliado, sin límite.
+-Consultas médicas: A cualquier afiliado, hasta 2 por mes.
+
+
+Historia de usuario 1
+ID: afiliacion persona.
+Titulo: Como persona quiero afiliarme para poder obtener beneficios.
+Reglas de negocio:
+    - Poseer una tarjeta de credito.
+
+Criterios de aceptacion:
+    Escenario 1: Afiliacion exitosa
+        Dado una persona que no esta afiliada, si posee una tarjeta de credito y la registra 
+        Cuando la persona registre su tarjeta y presione "Afiliarse"
+        Entonces el sistema carga a la persona como nuevo afiliado, le entrega un numero de afiliado y redirige al 
+        usuario a la pagina principal.
+    
+    Escenario 2: Afiliacion fallida por usuario ya registrado
+        Dado una persona que ya esta afiliada
+        Cuando la persona registre su tarjeta y presione "Afiliarse"
+        Entonces el sistema informa que el afiliado ya se encuentra cargado.
+    
+    Escenario 3: Afiliacion fallida por falta de tarjeta de credito 
+        Dado una persona que no esta afiliada y no posee tarjeta de credito 
+        Cuando la persona presione "Afiliarse"
+        Entonces el sistema informa que falta cargar los datos de la tarjeta.
+
+    Escenario 4: Afiliacion fallida por error de tarjeta 
+        Dado una persona que no esta afiliada y que ingresa un numero de tarjeta que no corresponde a una de credito
+        Cuando la persona registre su tarjeta y presione "Afiliarse"
+        Entonces el sistema informa que se ha ingresado una tarjeta que no corresponde a una de credito.
+
+
+Historia de usuario 2: 
+ID: Agregar persona a cargo 
+Titulo: Como afiliado quiero agregar personas a cargo para que puedan tener beneficios 
+Reglas de negocio: 
+    - Los hijos a cargo no pueden tener mas de 18 años.
+
+Criterios de aceptacion:
+    Escenario 1: Carga de pareja exitosa 
+        Dado un afiliado con numero 111 que quiere agregar a su pareja como persona a cargo
+        Cuando el afiliado ingresa los datos de la pareja y presiona "Agregar"
+        Entonces el sistema agrega la persona dentro de el grupo de personas a cargo del afiliado 111 y le otorga un 
+        numero de afiliado.
+
+    Escenario 2: Carga de hijo exitosa 
+        Dado un afiliado con numero 111 que quiere agregar a su hijo/a de 16 años como persona a cargo
+        Cuando el afiliado ingresa los datos de su hijo/a y presiona "Agregar"
+        Entonces el sistema agrega la persona dentro de el grupo de personas a cargo del afiliado 111 y le otorga un 
+        numero de afiliado.
+
+    Escenario 3: Carga de persona a cargo fallida  
+        Dado un afiliado con numero 222 que quiere agregar a una persona para que este a su cargo
+        Cuando el afiliado ingresa los datos de la persona y presiona "Agregar"
+        Entonces el sistema informa que la persona que se ha intentado agregar ya se encuentra cargada dentro de los 
+            usuarios a cargo del afiliado 222.
+    
+    Escenario 4: Carga de hijo/a fallida por ser mayor de edad
+        Dado un afiliado con numero 222 que quiere agregar a un hijo/a de 20 años para que este a su cargo
+        Cuando el afiliado ingresa los datos del hijo/a y presiona "Agregar"
+        Entonces el sistema informa que el hijo/a supera la edad maxima para ser cargado como hijo/a a cargo.
+
+
+Historia de usuario 3
+Id: Baja de un hijo/a                               //Se implementa???
+
+Historia de usuario 4 
+Id: Pagar con tarjeta 
+Titulo: Como usuario quiero pagar para poder afiliarme a la mutual 
+Reglas de negocio: Solo se aceptan numeros correspondientes a una tarjeta de credito
+
+Criterios de aceptacion: 
+    Escenario 1: Pago exitoso 
+        Dado que la conexion con el servidor del banco es exitosa y el numero de la tarjeta 123 corresponde a una tarjeta
+        de credito
+        Cuando el usuario ingrese la tarjeta de credito 123 y presione "Pagar"
+        Entonces el sistema registra el pago y retorna un mensaje de exito.
+
+    Escenario 2: Pago fallido por numero de tarjeta de credito inexistente 
+        Dado que la conexion con el servidor del banco es exitosa y el numero de tarjeta 1234 no corresponde a una tarjeta
+        de credito. 
+        Cuando la persona ingrese la tarjeta de credito 1234 y presione "Pagar"
+        Entonces el sistema informa que se ha ingresado una tarjeta que no corresponde a una de credito.
+    
+    Escenario 3: Pago fallido por saldo insuficiente en la tarjeta de credito 
+        Dado que la conexion del banco es exitosa y el numero, el numero de tarjeta 123 corresponde a una tarjeta de 
+        credito pero no posee suficiente saldo para realizar el pago 
+        Cuando la persona ingrese la tarjeta de credito 123 y presione "Pagar"
+        Entonces el sistema informa la tarjeta no posee suficiente saldo para realizar el pago.
+    
+    Escenario 4: Pago fallido por error en la conexion con el banco 
+        Dado que no se pudo realizar la conexion con el banco 
+        Cuando la persona ingrese la tarjeta de credito 123 y presione "Pagar"
+        Entonces el sistema informa que no se pudo realizar el pago por falta de conexion con el servidor del banco. 
+
+Historia de usuario 5
+ID:                                                 //Terminar de implementar 
+
+
+
+
+
+
+
+
+
+
+
+
