@@ -1,0 +1,94 @@
+Historia de usuario 1
+Id: registrarse en el sistema
+Titulo: como docente quiero registrarme en el sistema para poder inscribirme a cursos
+Reglas de negocio:
+    - dni entre 12 millones y 55 millones.
+    - No se pueden repetir los mails
+
+Criterios de aceptacion:
+    Escenario 1: registro exitoso 
+        Dado un docente no registrado cuyo dni cumple con los requisitos
+        Cuando el docente ingresa el dni 46004657, nombre valentin, apellido aruanno, mail valentin@ y presiona "Registrarse"
+        Entonces el sistema carga al docente registrado y le envia un mail al correo con la contrasenia a usar.
+
+    Escenario 2: registro fallido porque el docente ya se encuentra registrado 
+        Dado un docente que ya se encuentra registrado
+        Cuando el docente ingresa el dni 46004657, nombre valentin, apellido aruanno, mail valentin@ y presiona "Registrarse"
+        Entonces el sistema informa que el mail/dni o ambos ingresado/s ya corresponde a un docente registrado.
+
+    Escenario 3: registro fallido porque el es mayor a 55 millones 
+        Dado un docente no registrado cuyo dni supera el rango maximo
+        Cuando el docente ingresa el dni 62000000, nombre pepe, apellido aruanno, mail pepe@ y presiona "Registrarse"
+        Entonces el sistema informa que el dni supera el rango permitido.
+    
+    Escenario 4: registro fallido porque el es menor a 12 millones 
+        Dado un docente no registrado cuyo dni supera el rango maximo
+        Cuando el docente ingresa el dni 10000000, nombre pedro, apellido aruanno, mail pedro@ y presiona "Registrarse"
+        Entonces el sistema informa que el dni es inferior al rango permitido.
+
+
+Historia de usuario 2
+
+ID: inicio sesion 
+Titulo: como usuario quiero iniciar sesion para poder utilizar la aplicacion 
+Reglas de negocio:
+
+Criterios de aceptacion:
+    Escenario 1: inicio exitoso 
+        Dado un usuario cuyo correo electronico es valentin@ y ya esta registrado en el sistema
+        Cuando el usuario ingrese su nombre de usuario valenA y su contrasenia 123 y presiona "Iniciar sesion"
+        Entonces el sistema redigira al usuario a la pagina principal.
+
+    Escenario 2: inicio fallido por datos invalidos 
+        Dado una persona cuyo correo electronico es valen@ y los datos de inicio de sesion son incorrectos
+        Cuando el usuario ingrese su nombre de usuario valenA y su contrasenia 345 y presiona "Iniciar sesion"
+        Entonces el sistema informa que los datos ingresados son incorrectos y que vuelva a intentar.
+
+
+Historia de usuario 3 
+
+ID: cierre sesion 
+Titulo: como usuario quiero cerrar sesion para salir de mi cuenta.
+Reglas de negocio:
+
+Criterios de aceptacion:
+    Escenario 1: cierre de sesion exitoso 
+        Dado un usuario con nombre de usuario valen@ y cuya sesion esta iniciada
+        Cuando el usuario con nombre de usuario valen presione "Cerrar sesion"
+        Entonces el sistema redirigira al usuario a la pagina de logIn y signIn.
+
+
+Historia de usuario 4
+
+ID: inscribirse a un concurso 
+Titulo: como docente me quiero inscribir a un concurso para poder seguir expandiendo mis conocimientos
+Reglas de negocio: 
+    - El docente no puede inscribirse a mas de 3 cursos.
+
+Criterios de aceptacion:
+    Escenario 1: inscipcion exitosa 
+        Dado un docente con correo valen@ que tiene su sesion iniciada, esta inscripcto en 2 cursos y selecciona una materia que se encuentra disponible 
+        Cuando el usuario seleccione matematica 3 presione "Inscribirse"
+        Entonces el sistema imprime un comprobante de inscripcion.
+
+    Escenario 2: inscipcion fallida por numero de concursos inscriptos mayor a 3 
+        Dado un docente con correo valen@ que tiene su sesion iniciada, esta inscripcto en 3 cursos y selecciona una materia que se encuentra disponible 
+        Cuando el usuario seleccione matematica 3 presione "Inscribirse"
+        Entonces el sistema informa que el docente no puede estar inscripto en mas de 3 concursos.
+
+
+Historia de usuario 5 
+
+ID: imprimir listado
+Titulo: como jefe del area de concurso quiero imrimir un listado con los inscriptos para poder enviarsela al secretario administrativo
+Reglas de negocio:
+
+Criterios de aceptacion:
+    Escenario 1: impresion exitosa 
+        Dado el jefe del area de concurso el cual ya esta ha iniciado sesion en el sistema y selecciona una materia de las disponibles
+        Cuando seleccione matematica 3 y presione "Imprimir listado"
+        Entonces el sistema imprimira todo el listado con los inscriptos e informara la finalizacion de la misma.
+
+        
+
+

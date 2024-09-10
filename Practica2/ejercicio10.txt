@@ -1,0 +1,131 @@
+Historia de usuario 1
+
+ID: registrarse app
+Titulo: como persona quiero registrarme en la aplicacion para poder realizar viajes
+Reglas de negocio: 
+    - No puede haber dos correos electronicos iguales.
+
+Criterios de aceptacion:
+    Escenario 1: registro exitoso 
+        Dado una persona cuyo correo es "valentin@" y el cual no esta registrado en la aplicacion 
+        Cuando la persona ingrese su nombre de usuario valenA, su correo valentin@ y su contrasenia 123 y presiona "Registrarme"
+        Entonces el sistema guardara el correo electronico y redigira al nuevo usuario a la pagina principal.
+
+    Escenario 2: registro fallido por correo duplicado 
+        Dado una persona cuyo correo es "valentinAru@", el cual ya esta registrado en la aplicacion 
+        Cuando la persona ingrese su nombre de usuario valenA, su correo valentinAru@ y su contrasenia 123 y presiona "Registrarme"
+        Entonces el sistema informara que el correo pertenece a una persona ya registrada.
+
+
+
+Historia de usuario 2
+
+ID: inicio sesion 
+Titulo: como usuario quiero iniciar sesion para poder comenzar a viajar
+Reglas de negocio:
+
+Criterios de aceptacion:
+    Escenario 1: inicio exitoso 
+        Dado una persona cuyo correo electronico es valentin@ y ya esta registrada en la aplicacion 
+        Cuando el usuario ingrese su nombre de usuario valenA, su correo valentin@ y su contrasenia 123 y presiona "Iniciar sesion"
+        Entonces el sistema redigira al usuario a la pagina principal.
+
+    Escenario 2: inicio fallido por datos invalidos 
+        Dado una persona cuyo correo electronico es valen@ y ya esta registrada en la aplicacion 
+        Cuando el usuario ingrese su nombre de usuario valenA, su correo valen@ y su contrasenia 345 y presiona "Iniciar sesion"
+        Entonces el sistema informa que los datos ingresados son incorrectos y que vuelva a intentar.
+
+
+Historia de usuario 3 
+
+ID: cierre sesion 
+Titulo: como usuario quiero cerrar sesion para salir de mi cuenta.
+Reglas de negocio:
+
+Criterios de aceptacion:
+    Escenario 1: cierre de sesion exitoso 
+        Dado un usuario con nombre de usuario valen y cuya sesion esta iniciada
+        Cuando el usuario con nombre de usuario valen presione "Cerrar sesion"
+        Entonces el sistema redirigira al usuario a la pagina de logIn y signIn.
+
+
+
+Historia de usuario 4
+
+ID: alta de un viaje 
+Titulo: como usuario quiero publicar un viaje para poder viajar con otras personas y compartir gastos.
+Reglas de negocio:
+    - No puede superponerse con otros viajes publicados.
+    - No pueden adeudarse calificaciones. 
+
+Criterios de aceptacion:
+    Escenario 1: alta de viaje exitosa 
+        Dado un usuario con correo electronico valen@ cuya sesion esta iniciada, no adeuda calificaciones y en la fecha 10/9/2024 a las 17hs no tiene programado ningun otro viaje
+        Cuando el usuario con correo electronico valen@ ingrese la fecha 10/9/2024 a la hora 17 y el automovil Ford Focus y presione "Publicar viaje"
+        Entonces el sistema cargara el viaje en su calendario de viajes e informara que su viaje se ha cargado con exito.
+
+    Escenario 2: alta de viaje fallido por fecha superpuesta  
+        Dado un usuario con correo electronico abril@ cuya sesion esta iniciada, no adeuda calificaciones y en la fecha 9/9/2024 a las 17hs tiene programado otro viaje
+        Cuando el usuario con correo electronico abril@ ingrese la fecha 9/9/2024 a la hora 17 y el automovil Ford Focus y presione "Publicar viaje"
+        Entonces el sistema informara que el usuario ya tiene un viaje programado en esa fecha y a esa hora.
+
+    Escenario 3: alta de viaje fallido por fecha invalida
+        Dado un usuario con correo electronico valen@ cuya sesion esta iniciada, no adeuda calificaciones y en la fecha 9/9/2022 a las 17hs tiene programado otro viaje
+        Cuando el usuario con correo electronico abril@ ingrese la fecha 9/9/2022 a la hora 17 y el automovil Ford Focus y presione "Publicar viaje"
+        Entonces el sistema informara que no se pueden programar viajes en fechas pasadas.
+
+    Escenario 4: alta de viaje fallido por deuda de calificaciones 
+        Dado un usuario con correo electronico valen@ cuya sesion esta iniciada y adeuda calificaciones
+        Cuando el usuario con correo electronico abril@ ingrese la fecha 9/9/2022 a la hora 17 y el automovil Ford Focus y presione "Publicar viaje"
+        Entonces el sistema informara que el usuario adeuda calificaciones y que no podra programar viajes hasta no completarlas.
+
+
+
+Historia de usuario 5
+
+ID: postularse a un viaje 
+Titulo: como usuario quiero postularme a un viaje porque quiero irme de vacaciones
+Reglas de negocio:
+    - Estar identificado.
+
+Criterios de aceptacion:
+    Escenario 1: postulacion exitosa 
+        Dado un usuario con correo electronico valen@ que esta identifiado en la aplicacion 
+        Cuando el usuario presione "Postularme al viaje"
+        Entonces el sistema enviara la solicitud de postulacion al usuario duenio del viaje e informara que la postulacion se realizo con exito.
+
+    Escenario 2: postulacion fallida por falta de identificacion 
+        Dado un usuario que no esta identificado 
+        Cuando el usuario presione "Postularme al viaje"
+        Entonces el sistema informara que debe iniciar sesion o registrarse en la aplicacion para comenzar a viajar.
+
+
+
+Historia de usuario 6 
+
+ID: calificar viaje 
+Titulo: como usuario quiero calificar un viaje para poder seguir viajando 
+Reglas de negocio:
+
+Criterios de aceptacion:
+    Escenario 1: calificacion de duenio de viaje exitosa positiva
+        Dado un usuario con correo valen@ que fue duenio de un viaje 
+        Cuando el usuario califique el viaje 
+        Entonces el sistema guardara la calificacion en sus calificaciones pendientes y sumara reputacion al usuario calificado.
+
+    Escenario 2: calificacion de duenio de viaje exitosa negativa
+        Dado un usuario con correo valen@ que fue duenio de un viaje 
+        Cuando el usuario califique el viaje 
+        Entonces el sistema guardara la calificacion en sus calificaciones pendientes y restara reputacion al usuario calificado.
+
+    Escenario 3: calificacion de copiloto exitosa positiva
+        Dado un usuario con correo valen@ que fue copiloto de un viaje 
+        Cuando el usuario califique el viaje 
+        Entonces el sistema guardara la calificacion en sus calificaciones pendientes y sumara reputacion al duenio del viaje calificado.
+
+    Escenario 4: calificacion de copiloto exitosa negativa 
+        Dado un usuario con correo valen@ que fue copiloto de un viaje 
+        Cuando el usuario califique el viaje 
+        Entonces el sistema guardara la calificacion en sus calificaciones pendientes y restara reputacion al duenio del viaje calificado.
+
+
