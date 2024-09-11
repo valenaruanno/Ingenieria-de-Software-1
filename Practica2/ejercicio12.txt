@@ -1,0 +1,113 @@
+Historia de usuario 1
+
+ID: autenticacion de suario 
+Titulo: personal del area comercial o gerente de la sucursal quiero autenticarme para poder dar de alta una tarjeta, de baja una tarjeta o pedir un listado.
+Reglas de negocio: 
+    - Corroborar credenciales con el sistema del banco central 
+
+Criterios de aceptacion:
+    Escenario 1: autenticacion exitosa 
+        Dado un personal del area comercial o gerente de la sucursal cuyas credenciales fueron verificadas con exito
+        Cuando el personal del area comercial o gerente ingrese su credencial y presione "Autenticarme"
+        Entonces el sistema se conecta con el sistema del banco central, espera la respuesta y le permite el acceso a las operaciones basicas que tiene un miembro del personal.
+
+    Escenario 2: autenticacion fallida por credencial no valida 
+        Dado un personal del area comercial o gerente de la sucursal cuyas credenciales no fueron verificadas con exito
+        Cuando el personal del area comercial o gerente ingrese su credencial y presione "Autenticarme"
+        Entonces el sistema se conecta con el sistema del banco central, espera su respuesta e informa que la credencial ingresada no corresponde a un miembro
+        del personal.
+
+    Escenario 3: autenticacion fallida por error de conexion 
+        Dado un personal del area comercial o gerente de la sucursal cuyas credenciales no pudieron ser verificadas por el sistema del banco central
+        Cuando el personal del area comercial o gerente ingrese su credencial y presione "Autenticarme"
+        Entonces el sistema intenta conectarse con el sistema del banco central e informa que hubo un problema en la conexion con el sistema del banco central.
+
+
+Historia de usuario 2 
+
+ID: alta de una tarjeta 
+Titulo: como personal quiero dar de alta la tarjeta de un usuario para poder darle un nuevo numero de tarjeta
+Reglas de negocio:
+    - El titular no debe ser moroso y debe ser cliente del banco.
+
+Criterios de aceptacion:
+    Escenario 1: alta de tarjeta exitoso 
+        Dado un personal del banco que esta autenticado y un titular con dni 46004 que es cliente el banco y no es moroso 
+        Cuando el personal ingrese los datos del cliente: nombre completo valentin Aruanno, dni 46004, cuit 20460043, que quiere una tarjeta gold y presiona "Dar de alta"
+        Entonces el sistema se conecta con el si SIVA, espera su respuesta y devuelve el nuevo numero de tarjeta brindado por el SIVA. 
+
+    Escenario 2: alta de tarjeta fallido no ser cliente del banco  
+        Dado un personal del banco que esta autenticado y un titular con dni 34546 que no es cliente el banco
+        Cuando el personal ingrese los datos del cliente: nombre completo valentin pepe, dni 34546, cuit 20345463, que quiere una tarjeta basica y presiona "Dar de alta"
+        Entonces el sistema informa que el dni del usuario no corresponde a un cliente del banco. 
+
+    Escenario 3: alta de tarjeta fallido por ser moroso 
+        Dado un personal del banco que esta autenticado y un titular con dni 47089 que es cliente el banco pero es moroso
+        Cuando el personal ingrese los datos del cliente: nombre completo abril manzur, dni 47089, cuit 20470893, que quiere una tarjeta gold y presiona "Dar de alta"
+        Entonces el sistema se conecta con el si SIVA, espera su respuesta e informa que el cliente que quiere dar de alta una nueva tarjeta es moroso.
+
+    Escenario 4: alta de tarjeta fallido por error en la conexion con el SIVA 
+        Dado un personal del banco que esta autenticado y un titular con dni 21828 que es cliente el banco y no es moroso
+        Cuando el personal ingrese los datos del cliente: nombre completo carolina di masi, dni 21828, cuit 20218283, que quiere una tarjeta gold y presiona "Dar de alta"
+        Entonces el sistema se intenta conectar con el si SIVA e informa que hubo un inconveniente con la conexion con el SIVA y que intente mas tarde.
+
+
+Historia de usuario 3 
+
+ID: baja de una tarjeta 
+Titulo: como personal quiero darle de baja a la tarjeta del cliente para poder sacarla de circulacion
+Reglas de negocio: 
+
+Criterios de aceptacion:
+    Escenario 1: baja exitosa 
+        Dado un miembro del personal del banco que esta autenticado y quiere dar de baja la tarjeta numero 1234
+        Cuando el miembro del personal ingrese el numero de tarjeta 1234 y presione "Dar de baja"
+        Entonces el sistema borrara de la base de datos del banco la tarjeta correspondiente e inforamra que la operacion se ha realizado con exito 
+
+    Escenario 2: baja fallido por numero de tarjeta invalido  
+        Dado un miembro del personal del banco que esta autenticado y quiere dar de baja la tarjeta numero 2345
+        Cuando el miembro del personal ingrese el numero de tarjeta 2345 y presione "Dar de baja"
+        Entonces el sistema informara que la tarjeta no se encuentra registrada en la base de datos
+
+    Escenario 3: baja fallido por error en la conexion con la base de datos 
+        Dado un miembro del personal del banco que esta autenticado y quiere dar de baja la tarjeta numero 1234
+        Cuando el miembro del personal ingrese el numero de tarjeta 1234 y presione "Dar de baja"
+        Entonces el sistema informara que hubo un error en la conexion con la base de datos.
+
+
+Hisotira de usuario 4 
+
+ID: pedir listado 
+Titulo: como gerente del banco quiero pedir un listado de las operaciones realizadas entre dos fechas para poder realizar un analisis
+Reglas de negocio:
+    - No se puede ingresar fechas futuras 
+    - La fecha de inicio no puede ser superior a la fecha de fin 
+
+Criterios de aceptacion:
+    Escenario 1: listado obtenido con exito 
+        Dado un gerente del banco autenticado que ingresa 2 fechas validas 
+        Cuando el gerente ingresa como fecha de inicio 1/9/2024 y 3/9/2024 y presiona "Listar"
+        Entonces el sistema compara las fechas, buscara las operaciones y las listara en pantalla.
+
+    Escenario 2: listado fallido por fecha de fin futura  
+        Dado un gerente del banco autenticado que ingresa la fechas de fin invalida 
+        Cuando el gerente ingresa como fecha de inicio 1/9/2024 y 3/9/2025 y presiona "Listar"
+        Entonces el sistema compara las fechas e informara que la fecha de fin no puede ser futura.
+
+    Escenario 3: listado fallido por fecha de inicio futura  
+        Dado un gerente del banco autenticado que ingresa la fechas de inicio invalida 
+        Cuando el gerente ingresa como fecha de inicio 1/9/2025 y 3/9/2024 y presiona "Listar"
+        Entonces el sistema compara las fechas e informara que la fecha de inicio no puede ser futura.
+
+    Escenario 4: listado fallido por fecha de inicio superior a la fecha de fin
+        Dado un gerente del banco autenticado que ingresa la fechas de inicio invalida 
+        Cuando el gerente ingresa como fecha de inicio 10/9/2025 y 3/9/2024 y presiona "Listar"
+        Entonces el sistema compara las fechas e informara que la fecha de inicio es superior a la fecha de fin.
+
+
+
+
+
+
+
+
