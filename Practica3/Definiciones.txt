@@ -1,0 +1,26 @@
+a) El desarrollo centrado en el usuario permite que se ponga al usuario en el centro de del proceso del desarrollo, asegurando que el
+    producto o sistema se ajuste a sus necesidades, expectativas y comportamientos.
+
+b) Los casos de uso son parte del proceso de modelado de las funcionalidaddes del sistema en terminos de los eventos que interactuan 
+    entre los usuarios y el sistema. Se utilizan a partir de un diagrama de casos de uso que ilustran las interacciones entre el sistema 
+    y el usuario, y ademas, mediante los escenarios que permiten la descripcion de la interaccion entre el actor y el sistema para realizar
+    su funcionalidad.
+
+c) El actor representa un papel desempeniado por un usuario que interactua, mmientras que el escenario es la descripcion de la interaccion
+    entre el actor y el sistema. 
+
+d) Relaciones:
+        - Asociaciones: Es la relacion entre un actor y un caso de uso en el que interactuan entre si. 
+        - Extensiones: Un caso de uso extiende la funcionalidad de otro caso de uso, los cuales solo son iniciados por casos de uso. 
+        - Uso o inclusion: Reduce la redundancia entre dos o mas CU al combinar los pasos comunes de los casos de uso. 
+        - Herencia: Relacion entre actores donde un actor hereda las funcionalidades de otro o varios actores.
+
+e) Beneficios:
+    - Captura requerimientos funcionales.
+    - Descompone el alcance del sistema en piezas mas manejables. 
+    - Es un medio de comunicacion con los usuarios.
+    - Utiliza lenguaje comun y facil de entender por otras partes.
+    - Permite estimar el alcance del proyecto y el esfuerzo a realizar.
+    - Define un linea base para la definicion de casos de prueba. 
+    - Define una linea base para toda la documentacion del sistema.
+    - Proporciona una herramienta para el seguimiento de los requisitos. 
