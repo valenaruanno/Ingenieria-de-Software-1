@@ -1,6 +1,6 @@
 Historia de usuario 1
 
-ID: autenticacion de suario 
+ID: autenticacion de usuario 
 Titulo: personal del area comercial o gerente de la sucursal quiero autenticarme para poder dar de alta una tarjeta, de baja una tarjeta o pedir un listado.
 Reglas de negocio: 
     - Corroborar credenciales con el sistema del banco central 
