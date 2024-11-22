@@ -1,0 +1,133 @@
+Historia de usuario 1
+    id: ver las noticias.
+    Titulo: como persona quiero acceder al listado de noticias para ver las noticias publicadas en el sitio.
+    Reglas de negocio:
+
+        Escenario 1: listado de noticias exitoso 
+            Dado un token de seguridad 111 el cual es correcto
+            Cuando la persona presiona "ver listado de noticias"
+            Entonces el sistema solicita conexion con el servidor proveedor, espera 
+                respuesta, envia el token de seguridad y recibe un conjunto 
+                de noticias en formato json, lo convierte en html y lo 
+                muestra en pantalla.
+        
+        Escenario 2: listado de noticias fallido por token incorrecto 
+            Dado el token de seguridad 222 el cual es incorrecto 
+            Cuando la persona presiona "ver listado de noticias"
+            Entonces el sistema solicita conexion con el servidor proveedor,
+                envia el token de seguridad, espera la respuesta e informa 
+                que ha ocurrido un error al listar las noticias. 
+
+        Escenario 3: listado de noticias fallido por falta de conexion 
+            Dado un token de seguridad 111 el cual es correcto, pero las
+                condiciones no son las adecuadas para establecer una 
+                conexion con el servidor.
+            Cuando la persona presiona "Ver listao de noticias"
+            Entonces el sistema solicita conexion con el servidor proveedor, 
+                espera la respuesta e informa que no ha podido establecer 
+                conexion con el servidor proveedor. 
+        
+        
+        
+        Listad vacion????
+
+
+
+Historia de usuario 2
+    Id: registrar usuario 
+    Titulo: como persona quiero registrarme para poder acceder a los detalles
+         de las noticias publicadas.
+    Reglas de negocio: 
+        - Ser mayor de 18 anios.
+        - 
+    
+    Escenario 1: registro exitoso 
+        Dado una persona cuyo mail valenaruanno@ no pertenece al de una persona 
+            registrada y tiene 19 anios 
+        Cuando la persona ingresa valentin, aruanno, 19, valenaruanno@ y
+            presiona "Registrarse"
+        Entonces el sistema guarda al nuevo usuario, genera una contrasenia
+            y la envia al mail ingresado. 
+
+    Escenario 2: registro fallido por ya estar registrado
+        Dado una persona cuyo mail valenaruanno@ ya pertenece al de una 
+            persona registrada
+        Cuando la persona ingresa valentin, aruanno, 19, valenaruanno@ y
+            presiona "Registrarse"
+        Entonces el sistema informa que el mail ingresado pertenece al de 
+            un usuario registrado. 
+        
+    Escenario 3: registro forma fallido por falta de edad
+        Dado una persona cuyo mail no pertenece al de una persona registrada
+            e ingresa como edad 15 anios
+        Cuando ls persona ingresa pepe, argento, 15, pepe@ y presiona "Registrarse"
+        Entonces el sistema informa que no se puede registrar una persona menor de edad
+
+
+Historia de usuario 3
+    Id: Iniciar sesion 
+    Titulo: como usuario quiero poder iniciar sesion para poder ver los detalles de las 
+        noticias
+    Reglas de negocio 
+        - 3 intentos de inicio de sesion. 
+
+    Escenario 1: inicio de sesion exitoso 
+        Dado el mail valenaruanno@ y la contrasenia 1234 que pertenecen a un usuario 
+        Cuando el usuario ingresa valenaruanno@, 1234 y presiona "Iniciar sesion"
+        Entonces el sistema registra el inicio de sesion y habilitas las herramientas 
+            para usuarion con sesion iniciada.
+    
+    Esceanario 2: inicio de sesion fallido por falta de registro 
+        Dado una persona no registrada con mail abru@ y contrasenia 1234
+        Cuando la persona ingrese abru@, 1234 y presione "Iniciar sesion"
+        Entonces el sistema informara que el mail no se encuentra registrado 
+    
+    Escenario 3: inicio fallido por datos incorrectos 
+        Dado el mail pepe@ y la contrasenia 12345 que no pertenece a un usuario y la 
+            cantidad de intentos es 1  
+        Cuando la persona ingresa pepe@, 12345 y presiona "Iniciar sesion"
+        Entonces el sistema informa que los datos ingresados no corresponden a un usuario
+            registrado e incrementa los intentos 
+
+    Escenario 4: inicio fallido por error en datos y bloqueo de cuenta 
+        Dado el mail @user2 y la contrasenia 1234 que no pertenece a la de un usuario y
+            la cantidad de intentos es 2 
+        Cuando la persona ingrese @user y la contrasenia 1234 y presione "Iniciar sesion"
+        Entonces el sistema informara que se ha llegado a la cantidad maxima de intentos 
+            permitidos y bloqueara la cuenta del usuario 
+    
+    Escenario 4: inicio de sesion fallido por cuenta bloqueada 
+        Dado el mail @user3 y la contrasenia 1234 
+        Cuando la persona ingrese user3@, 1234 y presione "Iniciar sesion"
+        Entonces el sistema informara que la cuenta permanece bloqueada. 
+
+Historia de usuario 4 
+    Id: cerrar sesion 
+    Titulo: como usuario quiero cerrar la sesion para poder salir de mi cuenta 
+
+
+    Escenario 1: cierre de sesion exitoso 
+        Dado un usuario con la sesion iniciada 
+        Cuando el usuario presione "Cerrar sesion"
+        Entonces el sistema deshabilita las herramientas para usuarios con la sesion
+            iniciada y muestra la version basica del portal.
+
+Historia de usuario 5 
+    Id: acceder a detalle 
+    Titulo: como usuario quiero poder acceder al detalle de una noticia para poder 
+        continuar leyendo sus detalles 
+    Reglas de negocio: 
+        - Solo se permite acceder al detalle de 5 noticias al dia 
+    
+    Escenario 1: acceso exitoso 
+        Dado un usuario con la sesion iniciada que tiene 1 acceso a detalles en el dia 
+        Cuando el usuario presione "Acceder al detalle"
+        Entonces el sistema desplegara el detalle de la noticia referenciada e incrementara 
+            la cantidad de accesos en el dia 
+    
+    Escenario 2: acceso fallido por llegar al limite de detalles leidos 
+        Dado un usuario con la sesion iniciada que tiene 5 accesos a detalles en el dia 
+        Cuando el usuario presione "Acceder al detalle"
+        Entonces el sistema informara que se ha alcanzado el limite de accesos a detalles 
+            diarios. 
+
