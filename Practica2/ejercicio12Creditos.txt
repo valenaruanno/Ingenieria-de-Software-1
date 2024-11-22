@@ -1,0 +1,78 @@
+Historia de usuario 1
+
+ID: pedir credito
+Titulo: como cliente quiero pedir un prestamo para darle cierto uso.
+Reglas de negocio:
+    - Ser cliente del banco.
+    - No superar el monto de los $400.000.
+
+Criterios de aceptacion:
+    Escenario 1: Peticion exitosa
+        Dado un usuario con DNI 46004 que es cliente del banco y el monto solicitado no supera los $400.000
+        Cuando el usuario ingresa el DNI 46004, nombre valentin, apellido aruanno, mail valen@, tipo de credito personal y el monto $350.000
+        Entonces el sistema almacena el tramite para que sea analizado por el area economica e imprime un numero para entregarle al cliente.
+
+    Escenario 2: Peticion fallida porque el numero de DNI no pertenece a un cliente del banco.
+        Dado un usuario con DNI 44432 que no es cliente del banco 
+        Cuando el usuario ingresa el DNI 44432, nombre diego, apellido aruanno, mail diego@, tipo de credito personal y el monto $350.000
+        Entonces el sistema le envia al usuario a partir del mail ingresado un instructivo para hacerse cliente del banco.
+
+    Escenario 3: Peticion fallida porque el monto ingresado supera los $400.000
+        Dado un usuario con DNI 12345 que no es cliente del banco 
+        Cuando el usuario ingresa el DNI 12345, nombre carolina, apellido di masi, mail caro@, tipo de credito personal y el monto $450.000
+        Entonces el sistema rechaza el inicio del tramite e imprime en pantalla que el monto solicitado excede el numero permitido.
+
+
+
+Historia de usuario 2
+
+ID: Consulta tramite
+Titulo: Como cliente quiero consultar el estado de mi tramite para poder avanzar con mi proyecto
+Reglas de negocio:
+    - Maximo 3 intentos fallidos de numero de tramite.
+
+Criterios de aceptacion: 
+    Escenario 1: Consuta exitosa
+        Dado un cliente cuyo DNI es 46004 y su numero de tramite es valido
+        Cuando el cliente ingrese el numero de tramite 123 y presione "Consultar"
+        Entonces el sistema retorna un informa con el esyado del tramite.
+
+    Escenario 2: Consuta fallida por numero de tramite invalido
+        Dado un cliente cuyo DNI es 46004 y su numero de tramite es invalido
+        Cuando el cliente ingrese el numero de tramite 345 y presione "Consultar"
+        Entonces el sistema retorna el mensaje "Tramite inexistente".
+
+    Escenario 3: Consuta fallida por superar los intentos fallidos
+        Dado un cliente cuyo DNI es 46004, su numero de tramite es invalido y su numero de cantidad de intentos fallidos es 2
+        Cuando el cliente ingrese el numero de tramite 123 y presione "Consultar"
+        Entonces el sistema bloquea la ip del cliente por 24hs y retorna el mensaje "Usted ha excedido el numero de consultas validas".
+
+
+
+Historia de usuario 3
+
+ID: Listado creditos aprobados
+Titulo: Como gerente quiero tener un listado de los creditos aprobados para poder analisar junto al equipo economico y financiero.
+Reglas de negocio:
+    - Las fechas a ingresar deben ser validas.
+
+Criterios de aceptacion:
+    Escenario 1: Listado de credito aprobados exitoso
+        Dado un gerente autenticado en el sistema que ha ingresado fechas validas
+        Cuando el gerente ingrese fecha de inicio 1/3/2024 y fecha de fin 10/9/2024 presione "Listar"
+        Entonces el sistema mostrara un listado con los creditos aprobados.
+    
+    Escenario 2: Listado de credito aprobados fallido por falta de creditos aprobados
+        Dado un gerente autenticado en el sistema que ha ingresado fechas validas
+        Cuando el gerente ingrese fecha de inicio 11/9/2024 y fecha de fin 30/9/2024 presione "Listar"
+        Entonces el sistema informara el mensaje "No hay creditos aprobados en las fechas ingresadas".
+
+    Escenario 3: Listado de credito aprobados fallido por fechas futuras
+        Dado un gerente autenticado en el sistema que ha ingresado fechas invalidas
+        Cuando el gerente ingrese fecha de inicio 10/10/2024 y fecha de fin 10/11/2024 presione "Listar"
+        Entonces el sistema informara el mensaje "Las fechas no pueden ser futuras".
+
+    Escenario 1: Listado de credito aprobados fallido por fecha de inicio superor a fehca de fin
+        Dado un gerente autenticado en el sistema que ha ingresado fechas invalidas
+        Cuando el gerente ingrese fecha de inicio 10/9/2024 y fecha de fin 1/9/2024 presione "Listar"
+        Entonces el sistema informara el mensaje "Las fechas deben ingresarse en el orden correcto".   
